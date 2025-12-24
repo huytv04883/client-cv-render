@@ -6,7 +6,7 @@ export default function ProtectedRoute({
 }: {
   children: JSX.Element;
 }) {
-  const isAuthenticated = false; // @TODO: replace with real auth check;
+  const isAuthenticated = true; // @TODO: replace with real auth check;
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
