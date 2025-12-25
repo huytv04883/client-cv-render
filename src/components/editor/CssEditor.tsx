@@ -1,12 +1,8 @@
-import { memo } from 'react';
+import type { CssEditor } from '@/types/css.type';
 import Editor from '@monaco-editor/react';
+import { memo } from 'react';
 
-interface CssEditorProps {
-  value: string;
-  onChange: (value: string) => void;
-}
-
-function CssEditor({ value, onChange }: CssEditorProps) {
+function CssEditor({ value, onChange }: CssEditor) {
   return (
     <Editor
       height="100%"
