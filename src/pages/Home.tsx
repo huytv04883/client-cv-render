@@ -1,12 +1,12 @@
 import Control from '@/components/controls/Control';
 import EditorTabs from '@/components/editor/EditorTabs';
-import { parseCssEditor } from '@/components/parser/parseCssEditor';
+import { parseCssEditor } from '@/utils/parser/parseCssEditor';
 import Resume from '@/components/preview/Resume';
 import baseMD from '@/components/preview/templates/BASE.md?raw';
 import DEFAULT_CSS from '@/components/preview/templates/defaultCss.css?raw';
 import { useResumeData } from '@/hooks/useResumeData';
 import { useCssStore } from '@/stores/cssStore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function HomePage() {
   const [markdown, setMarkdown] = useState<string>(baseMD);
@@ -25,6 +25,13 @@ export default function HomePage() {
     setNewCss(cssParse);
     setCss(value);
   };
+
+  useEffect(() => {
+    // Initialize CSS in store
+    if (!DEFAULT_CSS) return;
+    const cssParse = parseCssEditor(DEFAULT_CSS);
+    setNewCss(cssParse);
+  }, []);
 
   return (
     <div className="h-full grid grid-cols-1 md:grid-cols-[1fr_1fr_248px] gap-4 p-4 bg-gray-50">

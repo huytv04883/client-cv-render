@@ -1,4 +1,4 @@
-import { parserResume } from '@/components/parser/parseResume';
+import { parserResume } from '@/utils/parser/parseResume';
 import type {
   ResumeData,
   ResumeMeta,
