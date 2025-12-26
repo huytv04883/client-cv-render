@@ -20,7 +20,7 @@ export default function EditorTabs({
   const [tab, setTab] = useState<Tab>(Tab.Markdown);
 
   return (
-    <div className="h-full flex flex-col rounded-lg overflow-hidden border-solid border border-gray-200">
+    <div className="min-h-96 h-full flex flex-col rounded-lg overflow-hidden border-solid border border-gray-200">
       <div className="flex gap-1 p-1 bg-gray-100 rounded-t-lg">
         <button
           className={clsx(
@@ -46,7 +46,7 @@ export default function EditorTabs({
         </button>
       </div>
 
-      <div className="flex-1 h-0 ">
+      <div className="flex-1 h-full">
         {tab === Tab.Markdown ? (
           <MarkdownEditor value={markdown} onChange={onMarkdownChange} />
         ) : (
