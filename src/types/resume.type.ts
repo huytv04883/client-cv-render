@@ -16,14 +16,14 @@ export interface ResumeSkill {
 
 export interface ExperienceProject {
   name: string;
-  description?: string;
-  highlights?: string[];
+  responsibilities?: string[];
 }
 
 export interface WorkExperience {
   company: string;
   role?: string;
   duration?: string;
+  description?: string;
   projects?: ExperienceProject[];
 }
 
@@ -47,9 +47,9 @@ export interface Education {
 }
 
 export interface ResumeData {
-  meta: ResumeMeta;
-  summary: string;
-  skills: ResumeSkill[];
+  header: ResumeMeta;
+  summaryLines: string;
+  coreSkills: ResumeSkill[];
   experiences: WorkExperience[];
   projects: ResumeProject[];
   education: Education[];

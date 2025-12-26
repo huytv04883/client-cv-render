@@ -60,6 +60,8 @@ Currently expanding backend knowledge with Node.js, Express, and MongoDB toward 
 
 ### NTQ Solution — Frontend Developer
 
+Leading frontend development for enterprise clients in Japan, focusing on scalable React applications and cross-functional collaboration.
+
 **11/2023 – Present**
 
 #### EXOTIC – Japan (Enterprise System)
@@ -80,6 +82,8 @@ Currently expanding backend knowledge with Node.js, Express, and MongoDB toward 
 
 ### AI Platform (AIXBLOCK – Remote) — Frontend Developer
 
+Built the core frontend architecture for an AI/ML platform startup, establishing coding standards and component patterns.
+
 **11/2023 – 04/2024**
 
 - Developed React-based web application with custom SCSS architecture
@@ -88,6 +92,8 @@ Currently expanding backend knowledge with Node.js, Express, and MongoDB toward 
 - Implemented secure authentication and multi-step forms
 
 ### SmartOSC — Frontend Developer
+
+Delivered multiple e-commerce and enterprise solutions for international clients using modern React stack.
 
 **07/2021 – 10/2023**
 
@@ -105,22 +111,24 @@ Currently expanding backend knowledge with Node.js, Express, and MongoDB toward 
 - Implemented authentication, chat, posts, and comments
 - Used Storybook for UI documentation
 
-## Selected E-commerce Projects
+### Selected E-commerce Projects
 
-### Smart Living – SCG Thailand
+Specialized in Magento 2 and PWA Studio development for Thailand-based retail clients.
+
+#### Smart Living – SCG Thailand
 
 - Magento PWA Studio with React & Material UI
 - GraphQL integration via Apollo Client
 - Cart features: gift, coupon, payment methods
 - Performance optimization & unit testing
 
-### Doozy Online – SCG Thailand
+#### Doozy Online – SCG Thailand
 
 - PWA Studio frontend using React, MUI, styled-components
 - Auth0 authentication & authorization
 - UI component management with Storybook
 
-### Bespin
+#### Bespin
 
 - Customized Magento 2 themes
 - JavaScript, jQuery, AJAX, LESS

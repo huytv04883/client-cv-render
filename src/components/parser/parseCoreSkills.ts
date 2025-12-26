@@ -21,6 +21,8 @@ export function parserCoreSkills(nodes: Root) {
       }
     }
 
+    if (!isCoreSkillsSection) continue;
+
     if (isCoreSkillsSection && node.type === 'heading') {
       if (node.depth === 3) {
         coreSkills.push({

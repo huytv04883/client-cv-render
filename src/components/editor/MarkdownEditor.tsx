@@ -1,8 +1,12 @@
-import type { MDEditor } from '@/types/markdown.type';
 import Editor from '@monaco-editor/react';
 import { memo } from 'react';
 
-function MarkdownEditor({ value, onChange }: MDEditor) {
+interface MarkdownEditorProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
   return (
     <Editor
       height="100%"

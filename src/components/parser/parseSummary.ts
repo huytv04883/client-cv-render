@@ -20,6 +20,8 @@ export function parserSummary(nodes: Root) {
       }
     }
 
+    if (!isSummarySection) continue;
+
     if (isSummarySection && node.type === 'paragraph') {
       node.children.forEach((t) => {
         if (t.type === 'text') {

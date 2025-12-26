@@ -1,0 +1,27 @@
+/* @global all */
+#resume {
+  background: #111827;
+}
+
+/* @section header */
+#resume-preview {
+  font-family: 'Georgia', serif;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* @section core-skills */
+#resume-preview .resume-header {
+  text-align: center;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* @section education */
+#resume-preview .resume-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}

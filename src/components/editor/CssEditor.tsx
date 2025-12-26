@@ -1,4 +1,4 @@
-import type { CssEditor } from '@/types/css.type';
+import type { CssEditor } from '@/types/markdown.type';
 import Editor from '@monaco-editor/react';
 import { memo } from 'react';
 
