@@ -1,10 +1,11 @@
 import AuthLayout from '@/layouts/AuthLayout';
 import MainLayout from '@/layouts/MainLayout';
-import HomePage from '@/pages/Home';
-import LoginPage from '@/pages/Login';
-import NotFoundPage from '@/pages/NotFound';
+import { lazy } from 'react';
 import type { RouteObject } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
+const HomePage = lazy(() => import('@/pages/Home'));
+const LoginPage = lazy(() => import('@/pages/Login'));
+const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
 export const routes: RouteObject[] = [
   {

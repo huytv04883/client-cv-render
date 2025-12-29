@@ -1,7 +1,6 @@
 import { LANGUAGE } from '@/constant/constant';
-import Editor from '@monaco-editor/react';
+import { Editor } from '@monaco-editor/react';
 import { memo } from 'react';
-
 interface MarkdownEditorProps {
   value: string;
   onChange: (value: string) => void;
