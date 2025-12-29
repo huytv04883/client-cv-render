@@ -12,8 +12,8 @@ function ResumeCoreSkills({ data }: ResumeCoreSkillsProps) {
     <section className="resume-core-skills-section">
       <SectionHeading icon={Wrench} title="Core Skills" />
       <div className="resume-skills-list">
-        {data.map((skill, index) => (
-          <div key={index} className="resume-skill-row">
+        {data.map((skill) => (
+          <div key={skill.name} className="resume-skill-row">
             <span className="resume-skill-name">{skill.name}:</span>
             <div className="resume-skill-tags">
               {skill.children.map((child) => (
