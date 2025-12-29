@@ -37,10 +37,11 @@ export default function EditorTabs({
           className={clsx(
             'px-4 py-2 text-sm rounded-md transition-colors',
             tab === Tab.CSS
-              ? 'bg-white text-gray-900 shadow-sm'
-              : 'text-gray-600 hover:text-gray-900'
+              ? 'bg-white text-gray-400 shadow-none cursor-not-allowed'
+              : 'text-gray-400 cursor-not-allowed'
           )}
           onClick={() => setTab(Tab.CSS)}
+          disabled
         >
           CSS
         </button>
