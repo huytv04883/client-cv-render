@@ -1,19 +1,22 @@
 import Control from '@/components/controls/Control';
 import EditorTabs from '@/components/editor/EditorTabs';
-import { parseCssEditor } from '@/utils/parser/parseCssEditor';
 import Resume from '@/components/preview/Resume';
 import baseMD from '@/components/preview/templates/BASE.md?raw';
 import DEFAULT_CSS from '@/components/preview/templates/defaultCss.css?raw';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { useRealtimeStyle } from '@/hooks/useRealtimeStyle';
 import { useResumeData } from '@/hooks/useResumeData';
-import { useCssStore } from '@/stores/cssStore';
+import { parseCssEditor } from '@/utils/parser/parseCssEditor';
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const [markdown, setMarkdown] = useState<string>(baseMD);
-  const { setNewCss } = useCssStore();
   const [css, setCss] = useState<string>(DEFAULT_CSS);
   const { header, summaryLines, coreSkills, experiences, updateResumeData } =
     useResumeData(baseMD);
+
+  const style = useRealtimeStyle();
 
   const handleMarkdownChange = (value: string) => {
     setMarkdown(value);
@@ -21,20 +24,26 @@ export default function HomePage() {
   };
 
   const handleCssChange = (value: string) => {
-    const cssParse = parseCssEditor(value);
-    setNewCss(cssParse);
+    if (!value) return;
+    const sections = parseCssEditor(value);
     setCss(value);
+    sections.sections.forEach((css, name) => {
+      style.updateSection(name, css);
+    });
   };
 
   useEffect(() => {
-    // Initialize CSS in store
+    // Initialize default CSS
     if (!DEFAULT_CSS) return;
-    const cssParse = parseCssEditor(DEFAULT_CSS);
-    setNewCss(cssParse);
+    const sections = parseCssEditor(DEFAULT_CSS); //@TODO: Load from BE
+    sections.sections.forEach((css, name) => {
+      style.updateSection(name, css);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="h-full grid grid-cols-1 md:grid-cols-[1fr_1fr_248px] gap-4 p-4 bg-gray-50">
+    <div className="h-full grid grid-cols-1 md:grid-cols-[1fr_1fr_248px] gap-4">
       <EditorTabs
         markdown={markdown}
         css={css}
@@ -51,7 +60,7 @@ export default function HomePage() {
           education: [],
         }}
       />
-      <Control />
+      {!isMobile && <Control />}
     </div>
   );
 }

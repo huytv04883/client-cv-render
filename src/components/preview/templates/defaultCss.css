@@ -1,27 +1,99 @@
-/* @global ALL */
-#resume {
-  background: #111827;
+/* @section ALL */
+#resume-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 16px;
 }
 
 /* @section HEADER */
-#resume-preview {
-  font-family: 'Georgia', serif;
-  color: #1f2937;
-  line-height: 1.6;
+#resume-preview .header {
+  display: flex;
+  flex-direction: column;
 }
 
-/* @section CORE_SKILLS */
-#resume-preview .resume-header {
-  text-align: center;
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
+#resume-preview .education,
+#resume-preview .publications,
+#resume-preview .experience,
+#resume-preview .awards {
+  display: flex;
+  flex-direction: column;
 }
 
-/* @section EDUCATION */
-#resume-preview .resume-header h1 {
-  font-size: 2rem;
+#resume-preview .education__title,
+#resume-preview .publications__title,
+#resume-preview .experience__title,
+#resume-preview .awards__title {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #111827;
+  color: #2563eb;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.25rem;
+}
+
+#resume-preview .education__item {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #374151;
+}
+
+#resume-preview .publications__item {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #374151;
+}
+
+#resume-preview .experience__item {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #374151;
+}
+
+#resume-preview .awards__item {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #374151;
+}
+
+#resume-preview .header__name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #374151;
   margin-bottom: 0.25rem;
+}
+
+#resume-preview .header__title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #d1d5db;
+  margin-bottom: 0.5rem;
+}
+
+#resume-preview .header__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 1rem;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+#resume-preview .header__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#resume-preview .header__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 2px solid #374151;
+  background: #1f2937;
+  align-self: flex-start;
 }
