@@ -17,8 +17,11 @@ const initialState: ResumeData = {
   summaryLines: '',
   coreSkills: [],
   experiences: [],
-  education: [],
-  projects: [],
+  education: {
+    school: '',
+    major: '',
+    duration: '',
+  },
 };
 
 function parseInitialData(markdown: string) {
@@ -28,11 +31,12 @@ function parseInitialData(markdown: string) {
     summaryLines: parsed.summaryLines.join('\n'),
     coreSkills: parsed.coreSkills,
     experiences: parsed.experiences,
+    education: parsed.education,
   };
 }
 
 export function useResumeData(initialMarkdown: string) {
-  const [initialData] = useState(() => parseInitialData(initialMarkdown));
+  const initialData = parseInitialData(initialMarkdown);
 
   const [header, setHeader] = useState<ResumeMeta>(
     initialData.header || initialState.header
@@ -46,6 +50,7 @@ export function useResumeData(initialMarkdown: string) {
   const [experiences, setExperiences] = useState<WorkExperience[]>(
     initialData.experiences || []
   );
+  const [education, setEducation] = useState(initialData.education || {});
 
   // Update function - only updates sections that actually changed
   const updateResumeData = useCallback((markdown: string) => {
@@ -61,6 +66,9 @@ export function useResumeData(initialMarkdown: string) {
     setExperiences((prev) =>
       isEqual(prev, parsed.experiences) ? prev : parsed.experiences
     );
+    setEducation((prev) =>
+      isEqual(prev, parsed.education) ? prev : parsed.education
+    );
   }, []);
 
   // Debounced update - 300ms delay to avoid excessive parsing while typing
@@ -71,6 +79,7 @@ export function useResumeData(initialMarkdown: string) {
     summaryLines,
     coreSkills,
     experiences,
+    education,
     updateResumeData: debouncedUpdate,
   };
 }

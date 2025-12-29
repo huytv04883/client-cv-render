@@ -42,8 +42,7 @@ export interface ResumeProject {
 export interface Education {
   school: string;
   major: string;
-  startDate: string;
-  endDate: string;
+  duration?: string;
 }
 
 export interface ResumeData {
@@ -51,6 +50,5 @@ export interface ResumeData {
   summaryLines: string;
   coreSkills: ResumeSkill[];
   experiences: WorkExperience[];
-  projects: ResumeProject[];
-  education: Education[];
+  education: Education;
 }

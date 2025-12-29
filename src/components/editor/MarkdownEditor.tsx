@@ -1,3 +1,4 @@
+import { LANGUAGE } from '@/constant/constant';
 import Editor from '@monaco-editor/react';
 import { memo } from 'react';
 
@@ -10,13 +11,13 @@ function MarkdownEditor({ value, onChange }: MarkdownEditorProps) {
   return (
     <Editor
       height="100%"
-      language="markdown"
+      language={LANGUAGE.MARKDOWN}
       value={value}
       onChange={(v) => onChange(v ?? '')}
       options={{
         wordWrap: 'on',
         minimap: { enabled: false },
-        fontSize: 14,
+        fontSize: 13,
         scrollBeyondLastLine: false,
         automaticLayout: true,
       }}

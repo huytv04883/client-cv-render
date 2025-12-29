@@ -9,7 +9,7 @@ export default function MainLayout() {
   const { isOpenMobileSettings, setOpenMobileSettings } = useAppStore();
   return (
     <>
-      <main className="h-[calc(100vh-32px)] flex flex-col">
+      <main className="h-full flex flex-col">
         {isMobile && (
           <div className="h-10 mb-4 flex items-center justify-start">
             <button type="button" onClick={() => setOpenMobileSettings(true)}>

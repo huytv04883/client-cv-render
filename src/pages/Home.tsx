@@ -13,8 +13,14 @@ export default function HomePage() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [markdown, setMarkdown] = useState<string>(baseMD);
   const [css, setCss] = useState<string>(DEFAULT_CSS);
-  const { header, summaryLines, coreSkills, experiences, updateResumeData } =
-    useResumeData(baseMD);
+  const {
+    header,
+    summaryLines,
+    coreSkills,
+    experiences,
+    education,
+    updateResumeData,
+  } = useResumeData(baseMD);
 
   const style = useRealtimeStyle();
 
@@ -43,7 +49,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="h-full grid grid-cols-1 md:grid-cols-[1fr_1fr_248px] gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_248px] gap-4 overflow-hidden">
       <EditorTabs
         markdown={markdown}
         css={css}
@@ -56,8 +62,7 @@ export default function HomePage() {
           summaryLines,
           coreSkills,
           experiences,
-          projects: [],
-          education: [],
+          education,
         }}
       />
       {!isMobile && <Control />}

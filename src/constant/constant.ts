@@ -11,3 +11,8 @@ export const SECTION = {
   HEADER: 'HEADER',
   ALL: 'ALL',
 };
+
+export const LANGUAGE = {
+  MARKDOWN: 'markdown',
+  CSS: 'css',
+};

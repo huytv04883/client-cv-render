@@ -5,7 +5,6 @@ email: huytv04883@gmail.com
 phone: '0349548174'
 location: Nam Tu Liem, Hanoi
 github: https://github.com/huytv04883
-years_experience: 5+
 role_target: Frontend / Fullstack
 ---
 
@@ -136,6 +135,7 @@ Specialized in Magento 2 and PWA Studio development for Thailand-based retail cl
 
 ## EDUCATION
 
-**FPT Polytechnic Hanoi**  
-Software Application  
-06/2017 – 02/2020
+### FPT Polytechnic Hanoi
+
+**11/2023 – 04/2024**
+Software Application

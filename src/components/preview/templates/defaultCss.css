@@ -8,83 +8,57 @@
   padding: 16px;
 }
 
+/* @section HEADING */
+#resume-preview .section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+#resume-preview .section-heading__icon {
+  color: #2563eb;
+}
+
 /* @section HEADER */
 #resume-preview .header {
   display: flex;
   flex-direction: column;
 }
 
-#resume-preview .education,
-#resume-preview .publications,
-#resume-preview .experience,
-#resume-preview .awards {
-  display: flex;
-  flex-direction: column;
-}
-
-#resume-preview .education__title,
-#resume-preview .publications__title,
-#resume-preview .experience__title,
-#resume-preview .awards__title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #2563eb;
-  margin-bottom: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 0.25rem;
-}
-
-#resume-preview .education__item {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  color: #374151;
-}
-
-#resume-preview .publications__item {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  color: #374151;
-}
-
-#resume-preview .experience__item {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  color: #374151;
-}
-
-#resume-preview .awards__item {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  color: #374151;
-}
-
 #resume-preview .header__name {
-  font-size: 2.5rem;
+  font-size: 32px;
   font-weight: bold;
   color: #374151;
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
 }
 
 #resume-preview .header__title {
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 500;
-  color: #d1d5db;
-  margin-bottom: 0.5rem;
+  color: #1e293b;
+  margin-bottom: 8px;
 }
 
 #resume-preview .header__contact {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  font-size: 1rem;
-  color: #9ca3af;
-  margin-bottom: 0.5rem;
+  gap: 10px;
+  font-size: 14px;
+  color: #1e293b;
+  margin-bottom: 8px;
 }
 
 #resume-preview .header__contact-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 #resume-preview .header__avatar {
@@ -92,8 +66,166 @@
   height: 96px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   border: 2px solid #374151;
   background: #1f2937;
   align-self: flex-start;
+}
+
+/* @section CORE-SKILLS */
+#resume-preview .core-skills {
+  margin-bottom: 24px;
+}
+
+#resume-preview .core-skills__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#resume-preview .core-skills__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+#resume-preview .core-skills__name {
+  font-weight: 600;
+  color: #1e293b;
+  min-width: 120px;
+}
+
+#resume-preview .core-skills__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#resume-preview .core-skills__tag {
+  background: #e0e7ff;
+  color: #3730a3;
+  font-size: 15px;
+  padding: 2px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  letter-spacing: 0.16px;
+}
+
+/* @section EXPERIENCE */
+#resume-preview .experience {
+  margin-bottom: 32px;
+}
+
+#resume-preview .experience__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#resume-preview .experience__item {
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid #bfdbfe;
+  background: none;
+}
+
+#resume-preview .experience__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#resume-preview .experience__company {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+
+#resume-preview .experience__role {
+  color: #2563eb;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+#resume-preview .experience__duration {
+  font-size: 15px;
+  color: #64748b;
+  font-style: italic;
+}
+
+#resume-preview .experience__description {
+  color: #334155;
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+#resume-preview .experience__projects {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#resume-preview .experience__project-name {
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 3px;
+  text-align: left;
+}
+
+#resume-preview .experience__responsibilities {
+  list-style: disc inside;
+  color: #334155;
+  font-size: 15px;
+  margin-left: 8px;
+  margin-bottom: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* @section EDUCATION */
+#resume-preview .education {
+  margin-bottom: 24px;
+}
+
+#resume-preview .education__item {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #374151;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#resume-preview .education__school-major {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: baseline;
+}
+
+#resume-preview .education__school {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+#resume-preview .education__major {
+  font-style: italic;
+  color: #1e293b;
+  text-align: left;
+}
+
+#resume-preview .education__duration {
+  font-size: 15px;
+  color: #64748b;
+  font-style: italic;
+  text-align: left;
 }

@@ -10,8 +10,8 @@ export default function SectionHeading({
   title,
 }: SectionHeadingProps) {
   return (
-    <h2 className="flex items-center gap-2 text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
-      <Icon size={20} className="text-blue-600" />
+    <h2 className="section-heading">
+      <Icon size={20} className="section-heading__icon" />
       {title}
     </h2>
   );

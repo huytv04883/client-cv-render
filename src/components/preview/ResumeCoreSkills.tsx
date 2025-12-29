@@ -9,15 +9,15 @@ type ResumeCoreSkillsProps = {
 
 function ResumeCoreSkills({ data }: ResumeCoreSkillsProps) {
   return (
-    <section className="resume-core-skills-section">
+    <section className="core-skills">
       <SectionHeading icon={Wrench} title="Core Skills" />
-      <div className="resume-skills-list">
+      <div className="core-skills__list">
         {data.map((skill) => (
-          <div key={skill.name} className="resume-skill-row">
-            <span className="resume-skill-name">{skill.name}:</span>
-            <div className="resume-skill-tags">
+          <div key={skill.name} className="core-skills__row">
+            <span className="core-skills__name">{skill.name}:</span>
+            <div className="core-skills__tags">
               {skill.children.map((child) => (
-                <span key={child} className="resume-skill-tag">
+                <span key={child} className="core-skills__tag">
                   {child}
                 </span>
               ))}
