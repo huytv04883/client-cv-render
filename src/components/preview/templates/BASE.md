@@ -1,18 +1,16 @@
 ---
-name: CMC FAST
-title: Dev
-email: demo@demo.com
-phone: '0123456789'
-location: Nam Tu Liem, Hanoi
-github: https://github.com/cmsfast
-role_target: Frontend / Fullstack
+name: Jane Smith
+title: Web Application Engineer
+email: jane.smith@example.com
+phone: '0987654321'
+location: District 1, Ho Chi Minh City
+github: https://github.com/janesmith
+role_target: Backend / Fullstack
 ---
 
 ## PROFESSIONAL_SUMMARY
 
-Frontend Developer with 5+ years of experience building scalable, high-performance web applications using React, Next.js, and Vue.js.
-Strong experience in enterprise systems and e-commerce platforms (Magento, PWA Studio).
-Currently expanding backend knowledge with Node.js, Express, and MongoDB toward a Fullstack role.
+Web Application Engineer with 3+ years of experience developing scalable web solutions using React, Node.js, and Vue.js. Skilled in building efficient backend systems and integrating modern frontend technologies. Committed to continuous learning and delivering reliable software.
 
 ## CORE_SKILLS
 
@@ -20,122 +18,91 @@ Currently expanding backend knowledge with Node.js, Express, and MongoDB toward 
 
 - JavaScript (ES6+)
 - TypeScript
-- jQuery
+- Python
 
 ### Frontend Frameworks & Libraries
 
 - React.js
-- Next.js
 - Vue.js
+- Redux Toolkit
 
-### Backend (Learning & Practical Basics)
+### Backend
 
 - Node.js
 - Express.js
 - MongoDB
 - RESTful API
-- JWT-based Authentication (basic)
+- JWT Authentication
 
 ### API Integration
 
 - RESTful APIs
-- GraphQL (Apollo Client)
+- GraphQL
 
 ### E-commerce Platforms
 
+- Shopify
 - Magento 2
-- PrestaShop
-- PWA Studio
 
 ### Additional Skills
 
 - MVC architecture
-- RESTful design principles
-- OAuth, JWT (basic)
-- Deployment: Vercel, Netlify
-- English reading & writing (good)
+- OAuth2, JWT
+- Deployment: Vercel, Heroku
+- English communication (good)
 
 ## WORK_EXPERIENCE
 
-### NTQ Solution — Frontend Developer
+### Tech Innovators — Fullstack Developer
 
-Leading frontend development for enterprise clients in Japan, focusing on scalable React applications and cross-functional collaboration.
+Developed and maintained web platforms for diverse clients, emphasizing robust backend and modern frontend solutions.
 
-**11/2023 – Present**
+**03/2023 – Present**
 
-#### EXOTIC – Japan (Enterprise System)
+#### Project Alpha
 
-- Developed and maintained large-scale React application with Tailwind CSS
-- Built reusable component libraries to improve development speed
-- Implemented internationalization (i18n) for multi-market expansion
-- Integrated APIs using React Query
-- Optimized performance for complex data tables
-- Collaborated with BAs, clients, and mobile teams in Agile sprints
-- Conducted code reviews to ensure code quality
+- Built RESTful APIs with Express.js and MongoDB
+- Developed React frontend with Material UI
+- Implemented authentication and authorization
+- Integrated third-party payment gateways
+- Wrote unit and integration tests
 
-#### Panasonic – RMPF
+#### Project Beta
 
-- Developed enterprise web features using Vue.js, SCSS, and Vuex
-- Optimized UI components and resolved production bugs
-- Participated in sprint planning and technical discussions
+- Designed and developed Vue.js SPA
+- Optimized performance and SEO
+- Collaborated with UI/UX designers
 
-### AI Platform (AIXBLOCK – Remote) — Frontend Developer
+### Digital Solutions — Frontend Developer
 
-Built the core frontend architecture for an AI/ML platform startup, establishing coding standards and component patterns.
+Contributed to e-commerce and SaaS projects, focusing on responsive and interactive user interfaces.
 
-**11/2023 – 04/2024**
+**07/2021 – 02/2023**
 
-- Developed React-based web application with custom SCSS architecture
-- Designed frontend architecture (components, stores, pages)
-- Built reusable component library without UI frameworks
-- Implemented secure authentication and multi-step forms
-
-### SmartOSC — Frontend Developer
-
-Delivered multiple e-commerce and enterprise solutions for international clients using modern React stack.
-
-**07/2021 – 10/2023**
-
-#### M-SIS
-
-- Built scalable frontend solutions using React, Next.js, Tailwind CSS
-- Implemented form validation with React Hook Form and Zod
-- Integrated i18n for multi-language support
-- Developed reusable UI components
-
-#### Heros Platform
-
-- Developed real-time features using Socket.io
-- Integrated Strapi CMS
-- Implemented authentication, chat, posts, and comments
-- Used Storybook for UI documentation
+- Developed reusable React components
+- Integrated APIs and managed state with Redux
+- Improved accessibility and cross-browser compatibility
+- Participated in Agile sprints and code reviews
 
 ### Selected E-commerce Projects
 
-Specialized in Magento 2 and PWA Studio development for Thailand-based retail clients.
+Specialized in Shopify and Magento 2 customizations for retail clients.
 
-#### Smart Living – SCG Thailand
+#### Shop A
 
-- Magento PWA Studio with React & Material UI
-- GraphQL integration via Apollo Client
-- Cart features: gift, coupon, payment methods
-- Performance optimization & unit testing
+- Customized Shopify themes with Liquid and JavaScript
+- Integrated payment and shipping APIs
+- Enhanced product filtering and search
 
-#### Doozy Online – SCG Thailand
+#### Retailer B
 
-- PWA Studio frontend using React, MUI, styled-components
-- Auth0 authentication & authorization
-- UI component management with Storybook
-
-#### Bespin
-
-- Customized Magento 2 themes
-- JavaScript, jQuery, AJAX, LESS
-- Custom checkout, pricing logic, product layouts
+- Magento 2 frontend customization
+- Implemented AJAX cart and checkout
+- Performance optimization
 
 ## EDUCATION
 
-### FPT Polytechnic Hanoi
+### University of Technology
 
-**11/2023 – 04/2024**
-Software Application
+**2017 – 2021**
+Computer Science
