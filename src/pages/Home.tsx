@@ -43,7 +43,7 @@ export default function HomePage() {
     <div className="grid grid-cols-1 md:grid-cols-[1fr_248px] gap-4 overflow-hidden">
       <div className="overflow-hidden border-solid border border-gray-200 rounded-lg">
         <SplitPane direction="horizontal">
-          <Pane minSize={200} defaultSize={isMobile ? '100%' : '50%'}>
+          <Pane minSize={200} defaultSize={'50%'}>
             <EditorTabs
               markdown={markdown}
               css={css}
@@ -51,7 +51,7 @@ export default function HomePage() {
               onCssChange={handleCssChange}
             />
           </Pane>
-          <Pane minSize={200} defaultSize={isMobile ? '100%' : '50%'}>
+          <Pane minSize={200} defaultSize={'50%'}>
             <Resume
               data={{
                 header,

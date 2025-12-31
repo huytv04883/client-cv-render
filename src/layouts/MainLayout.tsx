@@ -1,4 +1,5 @@
 import { Settings } from '@/components/settings/Index';
+import { SettingsPanel } from '@/components/settings/SettingsPanel';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { useAppStore } from '@/stores/appStore';
 import { Menu } from 'lucide-react';
@@ -21,7 +22,9 @@ export default function MainLayout() {
         <Settings
           isOpen={isOpenMobileSettings}
           onOpenChange={(isOpen) => setOpenMobileSettings(isOpen)}
-        />
+        >
+          <SettingsPanel />
+        </Settings>
       </main>
     </>
   );

@@ -18,9 +18,11 @@ export function Settings({ isOpen, children, onOpenChange }: HamburgerProps) {
       <SheetContent side="left">
         <SheetHeader>
           <SheetTitle className="text-left">Settings</SheetTitle>
-          <SheetDescription>Comming soon...</SheetDescription>
+          <SheetDescription></SheetDescription>
         </SheetHeader>
-        <div className="grid flex-1 auto-rows-min gap-6 px-4">{children}</div>
+        <div className="grid flex-1 auto-rows-min overflow-y-auto">
+          {children}
+        </div>
       </SheetContent>
     </Sheet>
   );
