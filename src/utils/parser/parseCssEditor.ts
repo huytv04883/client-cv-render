@@ -1,36 +1,26 @@
-const getRegexSection = (name: string) => {
-  return new RegExp(
-    String.raw`\/\*\s*@${name}\s+([\w-]+)\s*\*\/([\s\S]*?)(?=\/\*\s*@section|\s*$)`,
-    'g'
-  );
-};
-
 export interface CssSection {
   name: string;
   cssText: string;
 }
 
-export function parseCssSections(
-  css: string,
-  name: string
-): Map<string, CssSection> {
+export function parseCssSections(css: string): Map<string, CssSection> {
   const map = new Map<string, CssSection>();
-  for (const match of css.matchAll(getRegexSection(name))) {
-    const [, name, body] = match;
-    map.set(name, {
-      name,
-      cssText: body.trim(),
-    });
+  const regex =
+    /\/\*\s*@section\s+([\w-]+)\s*\*\/([\s\S]*?)(?=\/\*\s*@section|\s*$)/g;
+
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(css))) {
+    const [, name, css] = match;
+    map.set(name, { name, cssText: css.trim() });
   }
 
   return map;
 }
 
 export const parseCssEditor = (css: string) => {
-  const sections = parseCssSections(css, 'section');
-  const globalCss = parseCssSections(css, 'global');
+  const sections = parseCssSections(css);
   return {
     sections,
-    globalCss,
   };
 };

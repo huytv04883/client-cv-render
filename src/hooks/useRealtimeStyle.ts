@@ -1,97 +1,123 @@
-import type { CssSection } from '@/utils/parser/parseCssEditor';
+import DEFAULT_CSS from '@/components/preview/templates/defaultCss.css?raw';
+import { parseCssEditor, type CssSection } from '@/utils/parser/parseCssEditor';
+import { createInstanceStyle, replaceCssAttrValue } from '@/utils/replaceField';
 import { useCallback, useEffect, useRef } from 'react';
 
 type SectionMap = Map<string, CssSection>;
 
+const sections = parseCssEditor(DEFAULT_CSS);
+
 export function useRealtimeStyle() {
-  const sectionsStyleElRef = useRef<HTMLStyleElement | null>(null);
-  const globalStyleElRef = useRef<HTMLStyleElement | null>(null);
-  const sectionsRef = useRef<SectionMap>(new Map());
-  const globalStyleRef = useRef<SectionMap>(new Map());
+  const sectionStyleTagRef = useRef<HTMLStyleElement | null>(null);
+  const globalStyleTagRef = useRef<HTMLStyleElement | null>(null);
 
-  // Initialize style element
-  useEffect(() => {
-    let styleEl = document.getElementById(
-      'style-cv'
-    ) as HTMLStyleElement | null;
+  const sectionCssMapRef = useRef<SectionMap>(new Map());
+  const globalCssMapRef = useRef<SectionMap>(sections.sections);
 
-    let globalStyleEl = document.getElementById(
-      'style-global'
-    ) as HTMLStyleElement | null;
-
-    if (!globalStyleEl) {
-      globalStyleEl = document.createElement('style');
-      globalStyleEl.id = 'style-global';
-      document.head.appendChild(globalStyleEl);
-    }
-
-    if (!styleEl) {
-      styleEl = document.createElement('style');
-      styleEl.id = 'style-cv';
-      document.head.appendChild(styleEl);
-    }
-
-    sectionsStyleElRef.current = styleEl;
-    globalStyleElRef.current = globalStyleEl;
-    const sections = sectionsRef.current;
-    const globalStyles = globalStyleRef.current;
-
-    return () => {
-      styleEl?.remove();
-      globalStyleEl?.remove();
-      globalStyleElRef.current = null;
-      sectionsStyleElRef.current = null;
-      sections.clear();
-      globalStyles.clear();
-    };
-  }, []);
-
-  const apply = useCallback(() => {
-    if (!sectionsStyleElRef.current) return;
+  const applySections = useCallback(() => {
+    if (!sectionStyleTagRef.current) return;
 
     let cssText = '';
-
-    sectionsRef.current.forEach((css, name) => {
+    sectionCssMapRef.current.forEach((css, name) => {
       cssText += `/* ===== @section ${name} ===== */ \n ${css.cssText} \n\n`;
     });
 
-    sectionsStyleElRef.current.innerHTML = cssText;
+    sectionStyleTagRef.current.innerHTML = cssText;
+  }, []);
+
+  const applyGlobal = useCallback((field?: string, value?: string) => {
+    if (!globalStyleTagRef.current) return;
+
+    let globalCssText = '';
+    globalCssMapRef.current.forEach((css) => {
+      if (field && value) {
+        css.cssText = replaceCssAttrValue(field, css.cssText, value);
+      }
+      globalCssText += `/* ===== @section ${css.name} ===== */ \n ${css.cssText} \n\n`;
+    });
+
+    globalStyleTagRef.current.innerHTML = globalCssText;
   }, []);
 
   const updateSection = useCallback(
     (section: string, css: CssSection) => {
       if (!section) return;
-      sectionsRef.current.set(section, css);
-      apply();
+
+      if (section === 'SETTINGS' || section === 'ALL') {
+        globalCssMapRef.current.set(section, css);
+        applyGlobal();
+      } else {
+        sectionCssMapRef.current.set(section, css);
+        applySections();
+      }
     },
-    [apply]
+    [applySections, applyGlobal]
   );
 
   const removeSection = useCallback(
     (section: string) => {
-      sectionsRef.current.delete(section);
-      apply();
+      sectionCssMapRef.current.delete(section);
+      applySections();
     },
-    [apply]
+    [applySections]
   );
 
   const setAll = useCallback(
     (map: SectionMap) => {
-      sectionsRef.current = new Map(map);
-      apply();
+      sectionCssMapRef.current = new Map(map);
+      applySections();
     },
-    [apply]
+    [applySections]
   );
 
   const clear = useCallback(() => {
-    sectionsRef.current.clear();
-    if (sectionsStyleElRef.current) {
-      sectionsStyleElRef.current.innerHTML = '';
+    sectionCssMapRef.current.clear();
+    globalCssMapRef.current.clear();
+
+    if (sectionStyleTagRef.current) {
+      sectionStyleTagRef.current.innerHTML = '';
     }
+
+    if (globalStyleTagRef.current) {
+      globalStyleTagRef.current.innerHTML = '';
+    }
+  }, []);
+
+  useEffect(() => {
+    const commonCvm = createInstanceStyle('common-cvm');
+    const sectionCvm = createInstanceStyle('section-cvm');
+
+    sectionStyleTagRef.current = sectionCvm;
+    globalStyleTagRef.current = commonCvm;
+
+    const sectionMap = sectionCssMapRef.current;
+    const globalMap = globalCssMapRef.current;
+
+    return () => {
+      sectionCvm?.remove();
+      commonCvm?.remove();
+
+      sectionStyleTagRef.current = null;
+      globalStyleTagRef.current = null;
+
+      sectionMap.clear();
+      globalMap.clear();
+    };
+  }, []);
+
+  useEffect(() => {
+    // Initialize default CSS
+    if (!DEFAULT_CSS) return;
+    const sections = parseCssEditor(DEFAULT_CSS); //@TODO: Load from BE
+    sections.sections.forEach((css, name) => {
+      updateSection(name, css);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
     updateSection,
+    applyGlobal,
     removeSection,
     setAll,
     clear,

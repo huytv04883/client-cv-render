@@ -21,3 +21,8 @@ export interface Settings {
   [SETTING_FIELDS.MARGIN_LEFT_RIGHT]: number;
   [SETTING_FIELDS.PARAGRAPH_SPACING]: number;
 }
+
+export const FIELDS = {
+  [SETTING_FIELDS.THEME_COLOR]: 'color',
+  [SETTING_FIELDS.FONT_SIZE]: 'font-size',
+} as unknown as Record<SETTING_FIELDS, string>;

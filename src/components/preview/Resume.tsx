@@ -12,7 +12,10 @@ type ResumeProps = {
 function Resume({ data }: ResumeProps) {
   const { header, summaryLines, coreSkills, experiences, education } = data;
   return (
-    <div id="resume-preview" className="h-[calc(100vh-32px)] overflow-y-auto">
+    <div
+      id="resume-preview"
+      className="h-[calc(100vh-32px)] overflow-y-auto border-solid border-l border-gray-200"
+    >
       <ResumeHeader data={header} />
       <ResumeSummary summary={summaryLines} />
       <ResumeCoreSkills data={coreSkills} />
