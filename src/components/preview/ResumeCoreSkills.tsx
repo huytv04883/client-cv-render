@@ -1,5 +1,4 @@
 import type { ResumeSkill } from '@/types/resume.type';
-import { Wrench } from 'lucide-react';
 import { memo } from 'react';
 import SectionHeading from './SectionHeading';
 
@@ -10,7 +9,7 @@ type ResumeCoreSkillsProps = {
 function ResumeCoreSkills({ data }: ResumeCoreSkillsProps) {
   return (
     <section className="core-skills">
-      <SectionHeading icon={Wrench} title="Core Skills" />
+      <SectionHeading title="Core Skills" />
       <div className="core-skills__list">
         {data.map((skill) => (
           <div key={skill.name} className="core-skills__row">

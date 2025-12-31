@@ -12,7 +12,7 @@ export function CustomDivider(props: DividerProps) {
         justifyContent: 'center',
         cursor: 'col-resize',
         height: '100%',
-        width: '6px',
+        width: '12px',
       }}
     >
       <GripVertical size={22} />

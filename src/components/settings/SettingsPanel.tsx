@@ -17,11 +17,19 @@ export function SettingsPanel() {
     value: Settings[K]
   ) {
     handleSettingChange(key, value);
-    applyGlobal(FIELDS[key], String(value));
+    const fields = renderFields(key);
+    applyGlobal(fields, String(value));
+  }
+
+  function renderFields<K extends keyof Settings>(k: K) {
+    if (k === SETTING_FIELDS.THEME_COLOR) {
+      return ['color', 'border-color'];
+    }
+    return [FIELDS[k]];
   }
 
   return (
-    <div className="w-full h-[calc(100vh-32px)] max-w-sm space-y-6 bg-white p-6 rounded-lg border border-gray-200">
+    <div className="w-full h-[calc(100vh-32px)] max-w-sm space-y-6 bg-white p-6 rounded-lg border border-gray-200 overflow-y-auto">
       <PaperSizeSection
         value={settings.paperSize}
         onChange={(value) =>

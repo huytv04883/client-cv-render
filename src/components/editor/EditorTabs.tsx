@@ -20,8 +20,8 @@ export default function EditorTabs({
   const [tab, setTab] = useState<Tab>(Tab.Markdown);
 
   return (
-    <div className="h-[calc(100vh-32px)] flex flex-col">
-      <div className="flex gap-1 p-1 bg-gray-100 rounded-t-lg">
+    <div className="h-[calc(100vh-32px)] flex flex-col border-r border-gray-200">
+      <div className="flex gap-1 p-1 bg-gray-100">
         <button
           className={clsx(
             'px-4 py-2 text-sm rounded-md transition-colors',

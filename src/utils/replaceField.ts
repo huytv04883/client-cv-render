@@ -8,14 +8,18 @@ const WITH_PX = [
 ];
 
 export const replaceCssAttrValue = (
-  field: string,
+  fields: string[],
   cssText: string,
   value: string
-) =>
-  cssText.replace(
-    new RegExp(`${field}\\s*:\\s*[^;]+;`, 'g'),
-    `${field}: ${WITH_PX.includes(field) ? `${value}px` : value};`
-  );
+) => {
+  fields.forEach((f) => {
+    cssText = cssText.replace(
+      new RegExp(`${f}\\s*:\\s*[^;]+;`, 'g'),
+      `${f}: ${WITH_PX.includes(f) ? `${value}px` : value};`
+    );
+  });
+  return cssText;
+};
 
 export const createInstanceStyle = (id: string): HTMLStyleElement | null => {
   let instance = document.getElementById(id) as HTMLStyleElement | null;

@@ -1,3 +1,4 @@
+import { CustomDivider } from '@/components/editor/CustomDivider';
 import EditorTabs from '@/components/editor/EditorTabs';
 import Resume from '@/components/preview/Resume';
 import baseMD from '@/components/preview/templates/BASE.md?raw';
@@ -42,7 +43,7 @@ export default function HomePage() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-[1fr_248px] gap-4 overflow-hidden">
       <div className="overflow-hidden border-solid border border-gray-200 rounded-lg">
-        <SplitPane direction="horizontal">
+        <SplitPane direction="horizontal" divider={CustomDivider}>
           <Pane minSize={200} defaultSize={'50%'}>
             <EditorTabs
               markdown={markdown}

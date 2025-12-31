@@ -3,7 +3,7 @@ import { parseCssEditor, type CssSection } from '@/utils/parser/parseCssEditor';
 import { createInstanceStyle, replaceCssAttrValue } from '@/utils/replaceField';
 import { useCallback, useEffect, useRef } from 'react';
 
-type SectionMap = Map<string, CssSection>;
+export type SectionMap = Map<string, CssSection>;
 
 const sections = parseCssEditor(DEFAULT_CSS);
 
@@ -13,6 +13,7 @@ export function useRealtimeStyle() {
 
   const sectionCssMapRef = useRef<SectionMap>(new Map());
   const globalCssMapRef = useRef<SectionMap>(sections.sections);
+  const updatedMap = new Map<string, CssSection>();
 
   const applySections = useCallback(() => {
     if (!sectionStyleTagRef.current) return;
@@ -25,17 +26,18 @@ export function useRealtimeStyle() {
     sectionStyleTagRef.current.innerHTML = cssText;
   }, []);
 
-  const applyGlobal = useCallback((field?: string, value?: string) => {
+  const applyGlobal = useCallback((fields?: string[], value?: string) => {
     if (!globalStyleTagRef.current) return;
 
     let globalCssText = '';
-    globalCssMapRef.current.forEach((css) => {
-      if (field && value) {
-        css.cssText = replaceCssAttrValue(field, css.cssText, value);
+    globalCssMapRef.current.forEach((css, name) => {
+      const updatedCss = { ...css };
+      if (fields && value) {
+        updatedCss.cssText = replaceCssAttrValue(fields, css.cssText, value);
+        updatedMap.set(name, updatedCss);
       }
-      globalCssText += `/* ===== @section ${css.name} ===== */ \n ${css.cssText} \n\n`;
+      globalCssText += `/* ===== @section ${name} ===== */ \n ${updatedCss.cssText} \n\n`;
     });
-
     globalStyleTagRef.current.innerHTML = globalCssText;
   }, []);
 

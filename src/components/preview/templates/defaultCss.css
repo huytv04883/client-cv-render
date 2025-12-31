@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  border-radius: 6px;
   padding: 16px;
   font-family: 'Minion Pro';
 }
@@ -11,7 +10,13 @@
 /* @section SETTINGS */
 #resume-preview h2 {
   font-size: 16px;
-  color: #111827;
+  color: #000000;
+  border-bottom: 1px solid;
+  border-color: #000000;
+}
+
+#resume-preview .header__name {
+  color: #000000;
 }
 
 /* @section HEADING */
@@ -22,7 +27,6 @@
   font-weight: bold;
   margin-bottom: 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #e5e7eb;
 }
 
 #resume-preview .section-heading__icon {
@@ -38,7 +42,6 @@
 #resume-preview .header__name {
   font-size: 32px;
   font-weight: bold;
-  color: #374151;
   margin-bottom: 4px;
 }
 
@@ -97,7 +100,7 @@
 #resume-preview .core-skills__name {
   font-weight: 600;
   color: #1e293b;
-  min-width: 120px;
+  text-align: left;
 }
 
 #resume-preview .core-skills__tags {

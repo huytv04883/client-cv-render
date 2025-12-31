@@ -19,14 +19,14 @@ export function FontSizeSection({ value, onChange }: FontSizeSectionProps) {
           value={[value as number]}
           onValueChange={(val) => onChange(val[0])}
           min={12}
-          max={20}
+          max={30}
           step={1}
           className="w-full"
         />
         <div className="flex justify-between text-xs text-gray-500">
           <span>12px</span>
           <span className="font-semibold text-gray-700">{value}px</span>
-          <span>20px</span>
+          <span>30px</span>
         </div>
       </div>
     </div>

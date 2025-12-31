@@ -1,5 +1,4 @@
 import type { WorkExperience } from '@/types/resume.type';
-import { Briefcase } from 'lucide-react';
 import { memo } from 'react';
 import SectionHeading from './SectionHeading';
 
@@ -10,7 +9,7 @@ type ResumeExperienceProps = {
 function ResumeExperience({ data }: ResumeExperienceProps) {
   return (
     <section className="experience">
-      <SectionHeading icon={Briefcase} title="Work Experience" />
+      <SectionHeading title="Work Experience" />
       <div className="experience__list">
         {data.map((experience) => (
           <div key={experience.company} className="experience__item">
