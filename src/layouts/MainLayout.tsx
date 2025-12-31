@@ -1,4 +1,4 @@
-import { Settings } from '@/components/controls/Settings';
+import { Settings } from '@/components/settings/Index';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { useAppStore } from '@/stores/appStore';
 import { Menu } from 'lucide-react';

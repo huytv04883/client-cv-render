@@ -4,8 +4,10 @@ import { useCallback, useEffect, useRef } from 'react';
 type SectionMap = Map<string, CssSection>;
 
 export function useRealtimeStyle() {
-  const styleElRef = useRef<HTMLStyleElement | null>(null);
+  const sectionsStyleElRef = useRef<HTMLStyleElement | null>(null);
+  const globalStyleElRef = useRef<HTMLStyleElement | null>(null);
   const sectionsRef = useRef<SectionMap>(new Map());
+  const globalStyleRef = useRef<SectionMap>(new Map());
 
   // Initialize style element
   useEffect(() => {
@@ -13,23 +15,39 @@ export function useRealtimeStyle() {
       'style-cv'
     ) as HTMLStyleElement | null;
 
+    let globalStyleEl = document.getElementById(
+      'style-global'
+    ) as HTMLStyleElement | null;
+
+    if (!globalStyleEl) {
+      globalStyleEl = document.createElement('style');
+      globalStyleEl.id = 'style-global';
+      document.head.appendChild(globalStyleEl);
+    }
+
     if (!styleEl) {
       styleEl = document.createElement('style');
       styleEl.id = 'style-cv';
       document.head.appendChild(styleEl);
     }
 
-    styleElRef.current = styleEl;
+    sectionsStyleElRef.current = styleEl;
+    globalStyleElRef.current = globalStyleEl;
+    const sections = sectionsRef.current;
+    const globalStyles = globalStyleRef.current;
 
     return () => {
-      styleEl.remove();
-      styleElRef.current = null;
-      sectionsRef.current.clear();
+      styleEl?.remove();
+      globalStyleEl?.remove();
+      globalStyleElRef.current = null;
+      sectionsStyleElRef.current = null;
+      sections.clear();
+      globalStyles.clear();
     };
   }, []);
 
   const apply = useCallback(() => {
-    if (!styleElRef.current) return;
+    if (!sectionsStyleElRef.current) return;
 
     let cssText = '';
 
@@ -37,7 +55,7 @@ export function useRealtimeStyle() {
       cssText += `/* ===== @section ${name} ===== */ \n ${css.cssText} \n\n`;
     });
 
-    styleElRef.current.innerHTML = cssText;
+    sectionsStyleElRef.current.innerHTML = cssText;
   }, []);
 
   const updateSection = useCallback(
@@ -67,8 +85,8 @@ export function useRealtimeStyle() {
 
   const clear = useCallback(() => {
     sectionsRef.current.clear();
-    if (styleElRef.current) {
-      styleElRef.current.innerHTML = '';
+    if (sectionsStyleElRef.current) {
+      sectionsStyleElRef.current.innerHTML = '';
     }
   }, []);
 
