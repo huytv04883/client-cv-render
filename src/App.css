@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Georgia';
+  src:
+    url('./assets/fonts/georgia/Georgia.woff2') format('woff2'),
+    url('./assets/fonts/georgia/Georgia.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Minion Pro';
+  src:
+    url('./assets/fonts/minion-pro/MinionPro-Regular.woff2') format('woff2'),
+    url('./assets/fonts/minion-pro/MinionPro-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Times New Roman';
+  src:
+    url('./assets/fonts/times-new-roman/TimesNewRomanPSMT.woff2')
+      format('woff2'),
+    url('./assets/fonts/times-new-roman/TimesNewRomanPSMT.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Garamond';
+  src:
+    url('./assets/fonts/garamond/Garamond.woff2') format('woff2'),
+    url('./assets/fonts/garamond/Garamond.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;

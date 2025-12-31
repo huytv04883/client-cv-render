@@ -25,4 +25,5 @@ export interface Settings {
 export const FIELDS = {
   [SETTING_FIELDS.THEME_COLOR]: 'color',
   [SETTING_FIELDS.FONT_SIZE]: 'font-size',
+  [SETTING_FIELDS.FONT_FAMILY_LATIN]: 'font-family',
 } as unknown as Record<SETTING_FIELDS, string>;
