@@ -13,7 +13,6 @@ export function useRealtimeStyle() {
 
   const sectionCssMapRef = useRef<SectionMap>(new Map());
   const globalCssMapRef = useRef<SectionMap>(sections.sections);
-  const updatedMap = new Map<string, CssSection>();
 
   const applySections = useCallback(() => {
     if (!sectionStyleTagRef.current) return;
@@ -34,7 +33,7 @@ export function useRealtimeStyle() {
       const updatedCss = { ...css };
       if (fields && value) {
         updatedCss.cssText = replaceCssAttrValue(fields, css.cssText, value);
-        updatedMap.set(name, updatedCss);
+        globalCssMapRef.current.set(name, updatedCss);
       }
       globalCssText += `/* ===== @section ${name} ===== */ \n ${updatedCss.cssText} \n\n`;
     });

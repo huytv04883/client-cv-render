@@ -1,10 +1,16 @@
 // Replaces the value of a given CSS attribute in the provided CSS text.
 const WITH_PX = [
   'font-size',
+  'padding-top',
+  'padding-bottom',
+  'padding-left',
+  'padding-right',
+  'gap',
   'margin-top',
   'margin-bottom',
   'margin-left',
   'margin-right',
+  'line-height',
 ];
 
 export const replaceCssAttrValue = (

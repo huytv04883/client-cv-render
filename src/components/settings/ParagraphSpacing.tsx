@@ -1,5 +1,5 @@
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
 import type { SettingOption } from '@/types/setting.type';
 import { Type } from 'lucide-react';
 
@@ -15,16 +15,21 @@ export function ParagraphSpacingSection({
         <Type className="w-5 h-5" />
         Paragraph Spacing
       </Label>
-      <Input
-        type="number"
-        value={value}
-        onChange={(e) => onChange(Number.parseFloat(e.target.value))}
-        placeholder="1.5"
-        step={0.1}
-        min={1}
-        max={3}
-        className="font-mono text-sm"
-      />
+      <div className="space-y-2">
+        <Slider
+          value={[Number(value)]}
+          onValueChange={(vals) => onChange(vals[0])}
+          min={0}
+          max={50}
+          step={1}
+          className="flex-1"
+        />
+        <div className="flex justify-between text-xs text-gray-500">
+          <span>0px</span>
+          <span>25px</span>
+          <span>50px</span>
+        </div>
+      </div>
     </div>
   );
 }

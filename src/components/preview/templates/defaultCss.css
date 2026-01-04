@@ -2,8 +2,11 @@
 #resume-preview {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding: 16px;
+  gap: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
   font-family: 'Minion Pro';
 }
 
@@ -80,10 +83,6 @@
 }
 
 /* @section CORE-SKILLS */
-#resume-preview .core-skills {
-  margin-bottom: 24px;
-}
-
 #resume-preview .core-skills__list {
   display: flex;
   flex-direction: column;
@@ -199,10 +198,6 @@
 }
 
 /* @section EDUCATION */
-#resume-preview .education {
-  margin-bottom: 24px;
-}
-
 #resume-preview .education__item {
   margin-bottom: 8px;
   font-size: 16px;

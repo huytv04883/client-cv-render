@@ -4,7 +4,6 @@ import { FIELDS, SETTING_FIELDS, type Settings } from '@/types/setting.type';
 import { FontFamilySection } from './FontFamily';
 import { FontSizeSection } from './FontSize';
 import { MarginsSection } from './Margins';
-import { PaperSizeSection } from './PaperSize';
 import { ParagraphSpacingSection } from './ParagraphSpacing';
 import { ThemeColorSection } from './ThemeColor';
 
@@ -17,26 +16,11 @@ export function SettingsPanel() {
     value: Settings[K]
   ) {
     handleSettingChange(key, value);
-    const fields = renderFields(key);
-    applyGlobal(fields, String(value));
-  }
-
-  function renderFields<K extends keyof Settings>(k: K) {
-    if (k === SETTING_FIELDS.THEME_COLOR) {
-      return ['color', 'border-color'];
-    }
-    return [FIELDS[k]];
+    applyGlobal(FIELDS[key], String(value));
   }
 
   return (
-    <div className="w-full h-[calc(100vh-32px)] max-w-sm space-y-6 bg-white p-6 rounded-lg border border-gray-200 overflow-y-auto">
-      <PaperSizeSection
-        value={settings.paperSize}
-        onChange={(value) =>
-          handleChangeOption(SETTING_FIELDS.PAPER_SIZE, value as string)
-        }
-      />
-
+    <div className="w-full h-[calc(100vh-35px)] max-w-sm space-y-6 bg-white p-6 rounded-lg border border-gray-200 overflow-y-auto">
       <ThemeColorSection
         value={settings.themeColor}
         onChange={(value) =>
@@ -62,13 +46,13 @@ export function SettingsPanel() {
       />
 
       <MarginsSection
-        marginTopBottom={settings.marginTopBottom}
-        marginLeftRight={settings.marginLeftRight}
+        marginTopBottom={settings.paddingTopBottom}
+        marginLeftRight={settings.paddingLeftRight}
         onTopBottomChange={(value) =>
-          handleChangeOption(SETTING_FIELDS.MARGIN_TOP_BOTTOM, value)
+          handleChangeOption(SETTING_FIELDS.PADDING_TOP_BOTTOM, value)
         }
         onLeftRightChange={(value) =>
-          handleChangeOption(SETTING_FIELDS.MARGIN_LEFT_RIGHT, value)
+          handleChangeOption(SETTING_FIELDS.PADDING_LEFT_RIGHT, value)
         }
       />
 

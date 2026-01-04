@@ -3,7 +3,7 @@ import SectionHeading from './SectionHeading';
 
 function ResumeSummary({ summary }: { summary: string }) {
   return (
-    <section className="mb-6">
+    <section className="relative">
       <SectionHeading title="Summary" />
       <p className="text-gray-700 leading-relaxed text-left">{summary}</p>
     </section>

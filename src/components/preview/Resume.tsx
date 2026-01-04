@@ -14,7 +14,7 @@ function Resume({ data }: ResumeProps) {
   return (
     <div
       id="resume-preview"
-      className="h-[calc(100vh-32px)] overflow-y-auto border-solid border-l border-gray-200"
+      className="h-[calc(100vh-35px)] overflow-y-auto border-solid border-l border-gray-200"
     >
       <ResumeHeader data={header} />
       <ResumeSummary summary={summaryLines} />
