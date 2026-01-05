@@ -1,0 +1,582 @@
+/* Dynamic Parser V2 - Resume Preview Styles */
+/* Uses dynamic class names: section-{sectionId}__element */
+
+/* ============================================
+   BASE CONTAINER
+   ============================================ */
+#resume-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  font-family: 'Minion Pro', Georgia, serif;
+  background: #ffffff;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+/* ============================================
+   DYNAMIC SECTION ROOT
+   Pattern: section-{id}
+   ============================================ */
+#resume-preview [class^='section-']:not([class*='__']) {
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   SECTION HEADING
+   Pattern: section-{id}__heading
+   ============================================ */
+#resume-preview [class$='__heading'] {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+/* ============================================
+   SECTION CONTENT
+   Pattern: section-{id}__content
+   ============================================ */
+#resume-preview [class$='__content'] {
+  padding-left: 0;
+}
+
+/* ============================================
+   SECTION CHILDREN (nested sections)
+   Pattern: section-{id}__children
+   ============================================ */
+#resume-preview [class$='__children'] {
+  margin-top: 16px;
+  padding-left: 0;
+}
+
+/* ============================================
+   PARAGRAPH STYLES
+   Pattern: section-{id}__paragraph, section-{id}__text
+   ============================================ */
+#resume-preview [class$='__paragraph'] {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#resume-preview [class$='__text'] {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* ============================================
+   LIST STYLES
+   Pattern: section-{id}__list, section-{id}__list-item
+   ============================================ */
+#resume-preview [class$='__list'] {
+  list-style: disc inside;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#resume-preview [class$='__list-item'] {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+}
+
+#resume-preview [class$='__nested-list'] {
+  list-style: circle inside;
+  padding-left: 20px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#resume-preview [class$='__nested-item'] {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* ============================================
+   TIMELINE STYLES
+   Pattern: section-{id}__timeline-*
+   ============================================ */
+#resume-preview [class$='__timeline'] {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#resume-preview [class$='__timeline-item'] {
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid #bfdbfe;
+}
+
+#resume-preview [class$='__timeline-header'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#resume-preview [class$='__timeline-title-group'] {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#resume-preview [class$='__timeline-title'] {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+#resume-preview [class$='__timeline-subtitle'] {
+  font-size: 15px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+#resume-preview [class$='__timeline-duration'] {
+  font-size: 15px;
+  color: #64748b;
+  font-style: italic;
+}
+
+#resume-preview [class$='__timeline-location'] {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 8px;
+  display: block;
+}
+
+#resume-preview [class$='__timeline-description'] {
+  font-size: 15px;
+  color: #334155;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+#resume-preview [class$='__timeline-list'] {
+  list-style: disc inside;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#resume-preview [class$='__timeline-list-item'] {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+}
+
+/* ============================================
+   TABLE STYLES
+   Pattern: section-{id}__table-*
+   ============================================ */
+#resume-preview [class$='__table'] {
+  overflow-x: auto;
+}
+
+#resume-preview [class$='__table'] > table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#resume-preview [class$='__table-head'] {
+  background: #f8fafc;
+}
+
+#resume-preview [class$='__table-th'] {
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+#resume-preview [class$='__table-row'] {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+#resume-preview [class$='__table-row']:hover {
+  background: #f8fafc;
+}
+
+#resume-preview [class$='__table-td'] {
+  padding: 8px 12px;
+  color: #334155;
+}
+
+/* ============================================
+   MIXED CONTENT STYLES
+   Pattern: section-{id}__mixed-*
+   ============================================ */
+#resume-preview [class$='__mixed'] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#resume-preview [class$='__mixed-paragraph'] {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+  line-height: 1.6;
+}
+
+#resume-preview [class$='__mixed-list'] {
+  list-style: disc inside;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#resume-preview [class$='__mixed-list-item'] {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+}
+
+/* ============================================
+   HEADER STYLES (for frontmatter data)
+   ============================================ */
+#resume-preview .header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+#resume-preview .header__name {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+#resume-preview .header__title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+#resume-preview .header__contact {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+#resume-preview .header__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#resume-preview .header__contact-link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+#resume-preview .header__contact-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   SPECIFIC SECTION OVERRIDES
+   You can target specific sections by their ID
+   Example: section-skills, section-experience
+   ============================================ */
+
+/* Skills section - horizontal list */
+#resume-preview [class^='section-skills'] [class$='__list'] {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  list-style: none;
+  padding-left: 0;
+}
+
+#resume-preview [class^='section-skills'] [class$='__list-item'] {
+  position: relative;
+  padding-left: 12px;
+}
+
+#resume-preview [class^='section-skills'] [class$='__list-item']::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+}
+
+/* Education section - no border */
+#resume-preview [class^='section-education'] [class$='__timeline-item'] {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* Experience section - enhanced timeline */
+#resume-preview [class^='section-experience'] [class$='__timeline-item'] {
+  border-left-color: #2563eb;
+}
+
+#resume-preview
+  [class^='section-experience']
+  [class$='__timeline-item']::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: #2563eb;
+  border-radius: 50%;
+}
+
+/* Summary/About section - larger text */
+#resume-preview [class^='section-summary'] [class$='__text'],
+#resume-preview [class^='section-about'] [class$='__text'],
+#resume-preview [class^='section-profile'] [class$='__text'] {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Projects section */
+#resume-preview [class^='section-projects'] [class$='__timeline-title'] {
+  color: #2563eb;
+}
+
+/* Certifications section */
+#resume-preview [class^='section-certifications'] [class$='__list-item'],
+#resume-preview [class^='section-certificates'] [class$='__list-item'] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#resume-preview
+  [class^='section-certifications']
+  [class$='__list-item']::before,
+#resume-preview [class^='section-certificates'] [class$='__list-item']::before {
+  content: '✓';
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* Languages section - inline badges */
+#resume-preview [class^='section-languages'] [class$='__list'] {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding-left: 0;
+}
+
+#resume-preview [class^='section-languages'] [class$='__list-item'] {
+  background: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  #resume-preview {
+    padding: 0;
+    font-size: 12px;
+  }
+
+  #resume-preview [class$='__heading'] {
+    font-size: 14px;
+  }
+
+  #resume-preview [class$='__timeline-item'] {
+    page-break-inside: avoid;
+  }
+
+  #resume-preview [class$='__text'],
+  #resume-preview [class$='__list-item'],
+  #resume-preview [class$='__timeline-list-item'] {
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   LEGACY FALLBACK CLASSES
+   For backwards compatibility
+   ============================================ */
+#resume-preview .dynamic-section {
+  margin-bottom: 16px;
+}
+
+#resume-preview .dynamic-section__heading {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+#resume-preview .dynamic-section__content {
+  padding-left: 0;
+}
+
+#resume-preview .dynamic-section__children {
+  margin-top: 16px;
+  padding-left: 0;
+}
+
+#resume-preview .section-paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#resume-preview .section-paragraph__text {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+  line-height: 1.6;
+}
+
+#resume-preview .section-list {
+  list-style: disc inside;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#resume-preview .section-list__item {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+}
+
+#resume-preview .section-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#resume-preview .section-timeline__item {
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid #bfdbfe;
+}
+
+#resume-preview .section-timeline__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#resume-preview .section-timeline__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+#resume-preview .section-timeline__subtitle {
+  font-size: 15px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+#resume-preview .section-timeline__duration {
+  font-size: 15px;
+  color: #64748b;
+  font-style: italic;
+}
+
+#resume-preview .section-timeline__list {
+  list-style: disc inside;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#resume-preview .section-timeline__list-item {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+}
+
+#resume-preview .section-table {
+  overflow-x: auto;
+}
+
+#resume-preview .section-table__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#resume-preview .section-table__th {
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+#resume-preview .section-table__td {
+  padding: 8px 12px;
+  color: #334155;
+}
+
+#resume-preview .section-mixed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#resume-preview .section-mixed__paragraph {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+  line-height: 1.6;
+}
+
+#resume-preview .section-mixed__list {
+  list-style: disc inside;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#resume-preview .section-mixed__list-item {
+  font-size: 15px;
+  color: #334155;
+  text-align: left;
+}
