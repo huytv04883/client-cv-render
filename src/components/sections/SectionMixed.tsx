@@ -1,6 +1,6 @@
+import { createSectionClasses } from '@/utils/classNames';
+import type { Section } from '@/utils/parser-v2/types';
 import { memo } from 'react';
-import type { Section } from '../types';
-import { createSectionClasses } from '../utils/classNames';
 
 type SectionMixedProps = {
   section: Section;

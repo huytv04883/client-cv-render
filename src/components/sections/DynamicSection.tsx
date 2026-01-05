@@ -1,5 +1,5 @@
-import type { Section } from '../types';
-import { createSectionClasses } from '../utils/classNames';
+import { createSectionClasses } from '@/utils/classNames';
+import type { Section } from '@/utils/parser-v2/types';
 import SectionList from './SectionList';
 import SectionMixed from './SectionMixed';
 import { SectionParagraph } from './SectionParagraph';

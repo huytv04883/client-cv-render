@@ -1,9 +1,9 @@
-import type { Section } from '../types';
-import { createSectionClasses } from '../utils/classNames';
+import { createSectionClasses } from '@/utils/classNames';
+import type { Section } from '@/utils/parser-v2/types';
 
-interface SectionParagraphProps {
+type SectionParagraphProps = {
   section: Section;
-}
+};
 
 export function SectionParagraph({ section }: SectionParagraphProps) {
   const paragraphs = section.data?.paragraphs || [];
