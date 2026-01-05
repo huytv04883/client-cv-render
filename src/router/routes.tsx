@@ -4,6 +4,8 @@ import { lazy } from 'react';
 import type { RouteObject } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 const HomePage = lazy(() => import('@/pages/Home'));
+const DashboardPage = lazy(() => import('@/pages/Dashboard'));
+const EditorPage = lazy(() => import('@/pages/Editor'));
 const LoginPage = lazy(() => import('@/pages/Login'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
@@ -18,6 +20,14 @@ export const routes: RouteObject[] = [
       {
         path: '/',
         element: <HomePage />,
+      },
+      {
+        path: '/dashboard',
+        element: <DashboardPage />,
+      },
+      {
+        path: '/editor/:id',
+        element: <EditorPage />,
       },
     ],
   },

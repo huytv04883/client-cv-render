@@ -20,7 +20,7 @@ export function SettingsPanel() {
   }
 
   return (
-    <div className="w-full h-[calc(100vh-35px)] max-w-sm space-y-6 bg-white p-6 rounded-lg border border-gray-200 overflow-y-auto">
+    <div className="w-full h-[calc(100vh-82px)] max-w-sm space-y-6 bg-white p-6 rounded-lg border border-gray-200 overflow-y-auto">
       <ThemeColorSection
         value={settings.themeColor}
         onChange={(value) =>

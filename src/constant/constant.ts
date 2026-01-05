@@ -3,6 +3,8 @@ export enum Tab {
   CSS = 'css',
 }
 
+export const GITHUB_REPO_URL = 'https://github.com/huytv04883/client-cv-render';
+
 export const SECTION = {
   SUMMARY: 'PROFESSIONAL_SUMMARY',
   CORE_SKILLS: 'CORE_SKILLS',
