@@ -1,8 +1,23 @@
+import baseMD from '@/components/preview/templates/BASE.md?raw';
+import { parseMarkdownSync } from '@/utils/parser-v2';
+import { DynamicSection } from '@/utils/parser-v2/components';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {
+  // Parse any markdown
+  const { header, sections } = parseMarkdownSync(baseMD);
+  console.log('header', header);
+
   return (
     <main className="flex flex-col items-center justify-center min-h-[calc(100vh-56px)] bg-gray-50 px-4">
+      <div id="resume-preview">
+        {
+          // Render dynamic sections
+          sections.map((section) => (
+            <DynamicSection key={section.id} section={section} />
+          ))
+        }
+      </div>
       <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">
         Write your <span className="text-orange-500">resumes</span> in Markdown!
       </h1>
