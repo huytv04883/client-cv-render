@@ -11,7 +11,7 @@ export default function LoginPage() {
         </button>
         <div className="mt-6 text-center">
           <p className="text-gray-500 text-sm">
-            Don't have an account?{' '}
+            Don't have an account?
             <a
               href="#"
               className="text-blue-400 hover:text-blue-300 transition-colors"
