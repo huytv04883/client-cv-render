@@ -1,12 +1,14 @@
 import { CustomDivider } from '@/components/editor/CustomDivider';
 import EditorTabs from '@/components/editor/EditorTabs';
-import Resume from '@/components/preview/Resume';
+import ResumeHeader from '@/components/preview/ResumeHeader';
 import baseMD from '@/components/preview/templates/BASE.md?raw';
 import DEFAULT_CSS from '@/components/preview/templates/defaultCss.css?raw';
+import { DynamicSection } from '@/components/sections/DynamicSection';
 import { SettingsPanel } from '@/components/settings/SettingsPanel';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { useRealtimeStyle } from '@/hooks/useRealtimeStyle';
 import { useResumeData } from '@/hooks/useResumeData';
+import { parseMarkdownSync } from '@/utils/parser-v2/parseMarkdown';
 import { parseCssEditor } from '@/utils/parser/parseCssEditor';
 import { useState } from 'react';
 import { Pane, SplitPane } from 'react-split-pane';
@@ -15,14 +17,8 @@ export default function EditorPage() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [markdown, setMarkdown] = useState<string>(baseMD);
   const [css, setCss] = useState<string>(DEFAULT_CSS);
-  const {
-    header,
-    summaryLines,
-    coreSkills,
-    experiences,
-    education,
-    updateResumeData,
-  } = useResumeData(baseMD);
+  const { updateResumeData } = useResumeData(baseMD);
+  const { header, sections } = parseMarkdownSync(markdown);
 
   const style = useRealtimeStyle();
 
@@ -53,15 +49,15 @@ export default function EditorPage() {
             />
           </Pane>
           <Pane minSize={200} defaultSize={'50%'}>
-            <Resume
-              data={{
-                header,
-                summaryLines,
-                coreSkills,
-                experiences,
-                education,
-              }}
-            />
+            <div
+              id="resume-preview"
+              className="h-[calc(100vh-82px)] overflow-y-auto border-solid border-l border-gray-200"
+            >
+              <ResumeHeader data={header} />
+              {sections.map((section) => (
+                <DynamicSection key={section.id} section={section} />
+              ))}
+            </div>
           </Pane>
         </SplitPane>
       </div>

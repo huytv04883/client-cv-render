@@ -1,9 +1,21 @@
+import type { ResumeMeta } from '@/types/resume.type';
 import matter from 'gray-matter';
 import type { Root } from 'mdast';
 import { remark } from 'remark';
 import { extractSectionData } from './detectContentType';
 import { splitIntoSections } from './splitSections';
 import type { HeaderData, ParsedResume, Section } from './types';
+
+const header: ResumeMeta = {
+  name: '',
+  title: '',
+  email: '',
+  phone: '',
+  location: '',
+  github: '',
+  years_experience: '',
+  role_target: '',
+};
 
 // Parse markdown string into structured resume data
 export function parseMarkdownSync(markdown: string): ParsedResume {
@@ -23,7 +35,7 @@ export function parseMarkdownSync(markdown: string): ParsedResume {
 function extractHeaderData(
   frontmatter: Record<string, unknown>,
   sections: Section[]
-): HeaderData {
+): ResumeMeta {
   // If frontmatter has data, use it
   if (Object.keys(frontmatter).length > 0) {
     return normalizeHeaderData(frontmatter);
@@ -32,36 +44,39 @@ function extractHeaderData(
   // Otherwise, try to extract from first h1 section
   const firstH1 = sections.find((s) => s.level === 1);
   if (firstH1) {
+    const extracted = extractHeaderFromContent(firstH1);
     return {
-      name: firstH1.heading,
-      ...extractHeaderFromContent(firstH1),
+      name: firstH1.heading || '',
+      title: extracted.title || '',
+      email: extracted.email || '',
+      phone: extracted.phone || '',
+      location: extracted.location || '',
+      github: extracted.github || '',
+      years_experience: extracted.years_experience || '',
+      role_target: extracted.role_target || '',
     };
   }
 
-  return {};
+  return header;
 }
 
 // Normalize frontmatter to HeaderData
-function normalizeHeaderData(data: Record<string, unknown>): HeaderData {
-  const header: HeaderData = {};
-
+function normalizeHeaderData(data: Record<string, unknown>): ResumeMeta {
   const fieldMappings: Record<string, string> = {
     name: 'name',
     title: 'title',
     email: 'email',
     phone: 'phone',
     location: 'location',
-    address: 'location',
-    website: 'website',
-    url: 'website',
     github: 'github',
-    linkedin: 'linkedin',
+    years_experience: 'years_experience',
+    role_target: 'role_target',
   };
 
   for (const [key, value] of Object.entries(data)) {
     const normalizedKey = fieldMappings[key.toLowerCase()] || key;
-    if (typeof value === 'string') {
-      header[normalizedKey] = value;
+    if (typeof value === 'string' && normalizedKey in header) {
+      header[normalizedKey as keyof ResumeMeta] = value;
     }
   }
 

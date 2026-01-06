@@ -1,3 +1,5 @@
+import type { ResumeMeta } from '@/types/resume.type';
+
 export type ContentType = 'paragraph' | 'list' | 'timeline' | 'table' | 'mixed';
 
 export interface SectionNode {
@@ -61,6 +63,6 @@ export interface HeaderData {
 }
 
 export interface ParsedResume {
-  header: HeaderData;
+  header: ResumeMeta;
   sections: Section[];
 }
