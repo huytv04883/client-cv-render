@@ -14,7 +14,7 @@ export default function ProjectCard({
   onDelete,
 }: ProjectCardProps) {
   return (
-    <div className="group relative">
+    <div className="w-60 relative">
       <Link
         to={`/editor/${project.id}`}
         className="block h-80 bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"

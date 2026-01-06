@@ -8,8 +8,10 @@ import { SettingsPanel } from '@/components/settings/SettingsPanel';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { useRealtimeStyle } from '@/hooks/useRealtimeStyle';
 import { useResumeData } from '@/hooks/useResumeData';
+import { useAppStore } from '@/stores/appStore';
 import { parseMarkdownSync } from '@/utils/parser-v2/parseMarkdown';
 import { parseCssEditor } from '@/utils/parser/parseCssEditor';
+import clsx from 'clsx';
 import { useState } from 'react';
 import { Pane, SplitPane } from 'react-split-pane';
 
@@ -19,6 +21,7 @@ export default function EditorPage() {
   const [css, setCss] = useState<string>(DEFAULT_CSS);
   const { updateResumeData } = useResumeData(baseMD);
   const { header, sections } = parseMarkdownSync(markdown);
+  const { isExpandedSidebarSettings } = useAppStore();
 
   const style = useRealtimeStyle();
 
@@ -37,7 +40,13 @@ export default function EditorPage() {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[1fr_248px] gap-4 overflow-hidden px-4 pt-4">
+    <div
+      className={clsx(
+        'grid grid-cols-1',
+        { 'md:grid-cols-[1fr_248px]': isExpandedSidebarSettings },
+        'gap-4 overflow-hidden px-4 pt-4'
+      )}
+    >
       <div className="overflow-hidden border-solid border border-gray-200 rounded-lg">
         <SplitPane direction="horizontal" divider={CustomDivider}>
           <Pane minSize={200} defaultSize={'50%'}>

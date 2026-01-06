@@ -18,7 +18,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-[calc(100vh-56px)] p-4 max-w-screen-2xl mx-auto">
       <Header onSave={() => {}} onImport={() => {}} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <NewProject />
         {mockProjects.map((project) => (
           <ProjectCard
