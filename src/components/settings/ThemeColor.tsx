@@ -26,7 +26,7 @@ export function ThemeColorSection({
             key={color}
             onClick={() => onColorClick(color)}
             className={cn(
-              'w-8 h-8 rounded transition-all',
+              'w-5 h-5 rounded transition-all',
               value === color ? 'ring-2 ring-offset-1 ring-gray-400' : ''
             )}
             style={{ backgroundColor: color }}

@@ -1,9 +1,8 @@
 import { CustomDivider } from '@/components/editor/CustomDivider';
 import EditorTabs from '@/components/editor/EditorTabs';
-import ResumeHeader from '@/components/preview/ResumeHeader';
 import baseMD from '@/components/preview/templates/BASE.md?raw';
 import DEFAULT_CSS from '@/components/preview/templates/defaultCss.css?raw';
-import { DynamicSection } from '@/components/sections/DynamicSection';
+import Preview from '@/components/sections/Preview';
 import { SettingsPanel } from '@/components/settings/SettingsPanel';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { useRealtimeStyle } from '@/hooks/useRealtimeStyle';
@@ -58,15 +57,7 @@ export default function EditorPage() {
             />
           </Pane>
           <Pane minSize={200} defaultSize={'50%'}>
-            <div
-              id="resume-preview"
-              className="h-[calc(100vh-82px)] overflow-y-auto border-solid border-l border-gray-200"
-            >
-              <ResumeHeader data={header} />
-              {sections.map((section) => (
-                <DynamicSection key={section.id} section={section} />
-              ))}
-            </div>
+            <Preview data={{ header, sections }} />
           </Pane>
         </SplitPane>
       </div>
