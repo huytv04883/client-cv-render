@@ -1,130 +1,109 @@
-import { A4_HEIGHT_MM, MM_TO_PX } from '@/constant/constant';
 import { usePageMeasureStore } from '@/stores/pageMeasureStore';
 import { useSettingsStore } from '@/stores/settingsStore';
-import { SETTING_FIELDS } from '@/types/setting.type';
+import {
+  CONTENT_HEIGHT_SETTINGS,
+  pageRender,
+  type PageContent,
+} from '@/utils/caculatePageRender';
 import type { Section } from '@/utils/parser-v2/types';
-import { useCallback, useMemo, useRef, useState } from 'react';
-
-export type PageContent = {
-  showHeader: boolean;
-  sections: Section[];
-};
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export function usePageSplit(sections: Section[]) {
-  const { settings } = useSettingsStore();
   const { setMeasurements } = usePageMeasureStore();
-
-  // Calculate page content height based on padding settings
-  const pageContentHeightPx = useMemo(() => {
-    const paddingTopBottom = settings[SETTING_FIELDS.PADDING_TOP_BOTTOM] || 16;
-    const contentHeightMm = A4_HEIGHT_MM - paddingTopBottom * 2;
-    return contentHeightMm * MM_TO_PX;
-  }, [settings]);
-
-  // Get paragraph spacing for gap calculation
-  const paragraphSpacing = useMemo(() => {
-    return settings[SETTING_FIELDS.PARAGRAPH_SPACING] || 20;
-  }, [settings]);
-
-  // Ref for first page (used for measuring on first load)
-  const firstPageRef = useRef<HTMLDivElement>(null);
-
-  // Initial state: all sections in one page (for measuring)
-  const [pages, setPages] = useState<PageContent[]>([
+  const [pages, setPages] = useState<PageContent[]>(() => [
     { showHeader: true, sections },
   ]);
+  const [isMeasuring, setIsMeasuring] = useState(true);
+  const firstPageRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
+  const prevSettingsRef = useRef(useSettingsStore.getState().settings);
 
-  // Split pages based on heights
+  // Split pages using pageRender utility
   const splitPages = useCallback(
     (
       headerHeight: number,
       sectionHeightList: { id: string; height: number }[]
     ) => {
-      const newPages: PageContent[] = [];
-      let currentPage: PageContent = { showHeader: true, sections: [] };
-      let currentHeight = headerHeight + paragraphSpacing;
-
-      for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        const measurement = sectionHeightList[i];
-        if (!measurement) continue;
-
-        const sectionHeight = measurement.height + paragraphSpacing;
-
-        const hasContent =
-          currentPage.showHeader || currentPage.sections.length > 0;
-        const wouldExceedHeight =
-          currentHeight + sectionHeight > pageContentHeightPx;
-
-        if (hasContent && wouldExceedHeight) {
-          newPages.push(currentPage);
-          currentPage = { showHeader: false, sections: [] };
-          currentHeight = 0;
-        }
-
-        currentPage.sections.push(section);
-        currentHeight += sectionHeight;
-
-        if (currentHeight >= pageContentHeightPx && i < sections.length - 1) {
-          newPages.push(currentPage);
-          currentPage = { showHeader: false, sections: [] };
-          currentHeight = 0;
-        }
-      }
-
-      if (currentPage.showHeader || currentPage.sections.length > 0) {
-        newPages.push(currentPage);
-      }
-
-      setPages(
-        newPages.length > 0 ? newPages : [{ showHeader: true, sections }]
+      const newPages = pageRender.splitPages(
+        sections,
+        headerHeight,
+        sectionHeightList
       );
+      setPages(newPages);
     },
-    [sections, pageContentHeightPx, paragraphSpacing]
+    [sections]
   );
 
-  // Measure from first page (contains all sections on first load) and save to store
+  // Measure from first page and save to store
   const measureAndSave = useCallback(() => {
     if (!firstPageRef.current) return;
 
-    // Filter out page-number element
-    const children = Array.from(firstPageRef.current.children).filter(
-      (el) => !el.classList.contains('page-number')
-    ) as HTMLElement[];
+    const measurements = pageRender.measureElements(
+      firstPageRef.current,
+      sections
+    );
+    if (!measurements) return;
 
-    if (children.length === 0) return;
-
-    const headerHeight = children[0]?.offsetHeight || 0;
-    const sectionHeightList = sections.map((section, index) => ({
-      id: section.id,
-      height: children[index + 1]?.offsetHeight || 0,
-    }));
-
-    // Save to store
-    setMeasurements(headerHeight, sectionHeightList);
-
-    // Split pages
-    splitPages(headerHeight, sectionHeightList);
+    const { headerHeight, sectionHeights } = measurements;
+    setMeasurements(headerHeight, sectionHeights);
+    splitPages(headerHeight, sectionHeights);
+    setIsMeasuring(false);
   }, [sections, setMeasurements, splitPages]);
 
-  // Recalculate pages from stored measurements (when settings change)
+  // Recalculate pages from stored measurements
   const recalculateFromStore = useCallback(() => {
-    // Get latest values directly from store
-    const store = usePageMeasureStore.getState();
-    const { headerHeight, sectionHeights: storedSections } = store;
-
-    if (headerHeight === 0 || storedSections.length === 0) {
-      return;
-    }
-    splitPages(headerHeight, storedSections);
+    const { headerHeight, sectionHeights } = usePageMeasureStore.getState();
+    if (headerHeight === 0 || sectionHeights.length === 0) return;
+    splitPages(headerHeight, sectionHeights);
   }, [splitPages]);
+
+  // Start measuring (reset to single page)
+  const startMeasuring = useCallback(() => {
+    setIsMeasuring(true);
+    setPages([{ showHeader: true, sections }]);
+  }, [sections]);
+
+  // Handle sections change - measure on first load
+  useEffect(() => {
+    startMeasuring();
+    const timer = setTimeout(measureAndSave, 100);
+    return () => clearTimeout(timer);
+  }, [sections, startMeasuring, measureAndSave]);
+
+  // Subscribe to settings changes
+  useEffect(() => {
+    const unsubscribe = useSettingsStore.subscribe((state) => {
+      if (isFirstRender.current) {
+        isFirstRender.current = false;
+        prevSettingsRef.current = state.settings;
+        return;
+      }
+
+      const prevSettings = prevSettingsRef.current;
+      const newSettings = state.settings;
+      prevSettingsRef.current = newSettings;
+
+      // Check if content height settings changed
+      const needsRemeasure = CONTENT_HEIGHT_SETTINGS.some(
+        (key) => newSettings[key] !== prevSettings[key]
+      );
+
+      if (needsRemeasure) {
+        // Font changed - re-measure DOM
+        startMeasuring();
+        setTimeout(measureAndSave, 100);
+      } else {
+        // Layout settings changed - recalculate from store
+        recalculateFromStore();
+      }
+    });
+
+    return unsubscribe;
+  }, [startMeasuring, measureAndSave, recalculateFromStore]);
 
   return {
     firstPageRef,
     pages,
-    measureAndSave,
-    recalculateFromStore,
-    pageContentHeightPx,
-    paragraphSpacing,
+    isMeasuring,
   };
 }

@@ -1,108 +1,71 @@
----
-name: Jane Smith
-title: Web Application Engineer
-email: jane.smith@example.com
-phone: '0987654321'
-location: District 1, Ho Chi Minh City
-github: https://github.com/janesmith
-role_target: Backend / Fullstack
----
+# Markdown syntax guide
 
-## PROFESSIONAL_SUMMARY
+## Headers
 
-Web Application Engineer with 3+ years of experience developing scalable web solutions using React, Node.js, and Vue.js. Skilled in building efficient backend systems and integrating modern frontend technologies. Committed to continuous learning and delivering reliable software.
+# This is a Heading h1
 
-## CORE_SKILLS
+## This is a Heading h2
 
-### Programming Languages
+###### This is a Heading h6
 
-- JavaScript (ES6+)
-- TypeScript
-- Python
+## Emphasis
 
-### Frontend Frameworks & Libraries
+_This text will be italic_  
+_This will also be italic_
 
-- React.js
-- Vue.js
-- Redux Toolkit
+**This text will be bold**  
+**This will also be bold**
 
-### Backend
+_You **can** combine them_
 
-- Node.js
-- Express.js
-- MongoDB
-- RESTful API
-- JWT Authentication
+## Lists
 
-### API Integration
+### Unordered
 
-- RESTful APIs
-- GraphQL
+- Item 1
+- Item 2
+- Item 2a
+- Item 2b
+  - Item 3a
+  - Item 3b
 
-### E-commerce Platforms
+### Ordered
 
-- Shopify
-- Magento 2
+1. Item 1
+2. Item 2
+3. Item 3
+   1. Item 3a
+   2. Item 3b
 
-### Additional Skills
+## Images
 
-- MVC architecture
-- OAuth2, JWT
-- Deployment: Vercel, Heroku
-- English communication (good)
+![This is an alt text.](/image/sample.webp 'This is a sample image.')
 
-## WORK_EXPERIENCE
+## Links
 
-### Tech Innovators — Fullstack Developer
+You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
 
-Developed and maintained web platforms for diverse clients, emphasizing robust backend and modern frontend solutions.
+## Blockquotes
 
-**03/2023 – Present**
+> Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
+>
+> > Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
 
-#### Project Alpha
+## Tables
 
-- Built RESTful APIs with Express.js and MongoDB
-- Developed React frontend with Material UI
-- Implemented authentication and authorization
-- Integrated third-party payment gateways
-- Wrote unit and integration tests
+| Left columns | Right columns |
+| ------------ | :-----------: |
+| left foo     |   right foo   |
+| left bar     |   right bar   |
+| left baz     |   right baz   |
 
-#### Project Beta
+## Blocks of code
 
-- Designed and developed Vue.js SPA
-- Optimized performance and SEO
-- Collaborated with UI/UX designers
+```
+let message = 'Hello world';
+alert(message);
+```
 
-### Digital Solutions — Frontend Developer
+## Inline code
 
-Contributed to e-commerce and SaaS projects, focusing on responsive and interactive user interfaces.
-
-**07/2021 – 02/2023**
-
-- Developed reusable React components
-- Integrated APIs and managed state with Redux
-- Improved accessibility and cross-browser compatibility
-- Participated in Agile sprints and code reviews
-
-### Selected E-commerce Projects
-
-Specialized in Shopify and Magento 2 customizations for retail clients.
-
-#### Shop A
-
-- Customized Shopify themes with Liquid and JavaScript
-- Integrated payment and shipping APIs
-- Enhanced product filtering and search
-
-#### Retailer B
-
-- Magento 2 frontend customization
-- Implemented AJAX cart and checkout
-- Performance optimization
-
-## EDUCATION
-
-### University of Technology
-
-**2017 – 2021**
-Computer Science
+This web site is using `markedjs/marked`.

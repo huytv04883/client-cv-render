@@ -1,18 +1,19 @@
 /* @section ALL */
 #resume-preview {
-  width: 210mm;
-  height: 297mm;
+  width: 794px;
+  height: 1123px;
   max-width: 100%;
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-top: 20mm;
-  padding-bottom: 20mm;
-  padding-left: 15mm;
-  padding-right: 15mm;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
   font-family: 'Minion Pro';
+  word-break: break-all;
 }
 
 /* @section SETTINGS */

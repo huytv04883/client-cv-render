@@ -37,9 +37,10 @@ export const THEME_COLORS = [
   '#4CAF50',
 ];
 
-export const MM_TO_PX = 3.78;
 export const A4_HEIGHT_MM = 297;
 export const A4_PADDING_MM = 20;
 export const CONTENT_HEIGHT_MM = A4_HEIGHT_MM - A4_PADDING_MM * 2;
 // Convert mm to px (1mm ≈ 3.78px at 96dpi)
-export const PAGE_CONTENT_HEIGHT_PX = CONTENT_HEIGHT_MM * 3.78;
+export const MM_TO_PX = 3.78;
+export const A4_HEIGHT_PX = 1123;
+export const PAGE_CONTENT_HEIGHT_PX = A4_HEIGHT_PX;

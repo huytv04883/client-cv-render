@@ -61,7 +61,7 @@ export default function EditorPage() {
           </Pane>
         </SplitPane>
       </div>
-      {!isMobile && <SettingsPanel />}
+      {!isMobile && isExpandedSidebarSettings && <SettingsPanel />}
     </div>
   );
 }
