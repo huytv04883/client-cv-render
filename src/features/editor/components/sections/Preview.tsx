@@ -1,4 +1,4 @@
-import { usePageSplit } from '@/shared/hooks/usePageSplit';
+import { usePageSplit } from '@/features/editor/hooks/usePageSplit';
 import ResumeHeader from '../preview/ResumeHeader';
 import { DynamicSection } from './DynamicSection';
 import type { ParsedResume } from '@/shared/utils/parser-v2/types';

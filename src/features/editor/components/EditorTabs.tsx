@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import CssEditor from './CssEditor';
-import MarkdownEditor from './MarkdownEditor';
 import { Tab } from '@/app/config/constants';
+import MarkdownEditor from './MarkdownEditor';
 
 interface EditorTabsProps {
   markdown: string;

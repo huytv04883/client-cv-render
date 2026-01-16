@@ -1,4 +1,4 @@
-import { useRealtimeStyle } from '@/shared/hooks/useRealtimeStyle';
+import { useRealtimeStyle } from '@/features/editor/hooks/useRealtimeStyle';
 import { useSettingsStore } from '@/stores/settingsStore';
 import { FIELDS, SETTING_FIELDS, type Settings } from '@/types/setting.type';
 import { FontFamilySection } from './FontFamily';
