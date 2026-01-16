@@ -1,5 +1,5 @@
+import { ENV } from '@/app/config/env';
 import axios from 'axios';
-import { ENV } from '@/config/env';
 
 const instance = axios.create({
   baseURL: ENV.BASE_URL,

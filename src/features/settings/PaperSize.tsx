@@ -1,3 +1,4 @@
+import { PAPER_SIZES } from '@/app/config/constants';
 import { Label } from '@/shared/ui/label';
 import {
   Select,
@@ -6,7 +7,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/shared/ui/select';
-import { PAPER_SIZES } from '@/constant/constant';
 import type { SettingOption } from '@/types/setting.type';
 import { FileText } from 'lucide-react';
 

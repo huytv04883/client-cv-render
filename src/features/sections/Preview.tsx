@@ -1,7 +1,7 @@
 import { usePageSplit } from '@/shared/hooks/usePageSplit';
-import type { ParsedResume } from '@/utils/parser-v2/types';
 import ResumeHeader from '../preview/ResumeHeader';
 import { DynamicSection } from './DynamicSection';
+import type { ParsedResume } from '@/shared/utils/parser-v2/types';
 
 type PreviewProps = {
   data: ParsedResume;
