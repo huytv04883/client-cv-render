@@ -1,8 +1,9 @@
+import { Buffer } from 'buffer';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
 import { BrowserRouter } from 'react-router-dom';
-import { Buffer } from 'buffer';
+import App from './App.tsx';
+import AppProvider from './providers/AppProvider.tsx';
 
 declare global {
   interface Window {
@@ -15,7 +16,9 @@ window.Buffer = Buffer;
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <AppProvider>
+        <App />
+      </AppProvider>
     </BrowserRouter>
   </StrictMode>
 );
