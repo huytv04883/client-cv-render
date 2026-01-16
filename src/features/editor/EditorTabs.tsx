@@ -1,0 +1,59 @@
+import clsx from 'clsx';
+import { useState } from 'react';
+import CssEditor from './CssEditor';
+import MarkdownEditor from './MarkdownEditor';
+import { Tab } from '@/app/config/constants';
+
+interface EditorTabsProps {
+  markdown: string;
+  css: string;
+  onMarkdownChange: (v: string) => void;
+  onCssChange: (v: string) => void;
+}
+
+export default function EditorTabs({
+  markdown,
+  css,
+  onMarkdownChange,
+  onCssChange,
+}: EditorTabsProps) {
+  const [tab, setTab] = useState<Tab>(Tab.Markdown);
+
+  return (
+    <div className="h-[calc(100vh-82px)] flex flex-col border-r border-gray-200">
+      <div className="flex gap-1 p-1 bg-gray-100">
+        <button
+          className={clsx(
+            'px-4 py-2 text-sm rounded-md transition-colors',
+            tab === Tab.Markdown
+              ? 'bg-white text-gray-900 shadow-sm'
+              : 'text-gray-600 hover:text-gray-900'
+          )}
+          onClick={() => setTab(Tab.Markdown)}
+        >
+          Markdown
+        </button>
+        <button
+          className={clsx(
+            'px-4 py-2 text-sm rounded-md transition-colors',
+            tab === Tab.CSS
+              ? 'bg-white text-gray-400 shadow-none cursor-not-allowed'
+              : 'text-gray-400 cursor-not-allowed'
+          )}
+          onClick={() => setTab(Tab.CSS)}
+          disabled
+        >
+          CSS
+        </button>
+      </div>
+
+      <div className="flex-1 h-full">
+        {tab === Tab.Markdown ? (
+          <MarkdownEditor value={markdown} onChange={onMarkdownChange} />
+        ) : (
+          <CssEditor value={css} onChange={onCssChange} />
+        )}
+      </div>
+    </div>
+  );
+}
