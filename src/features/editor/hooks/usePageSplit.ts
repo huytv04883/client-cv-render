@@ -2,12 +2,12 @@ import { usePageMeasureStore } from '@/stores/pageMeasureStore';
 import { useSettingsStore } from '@/stores/settingsStore';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { Section } from '../utils/parser-v2/types';
+import type { Section } from '../../../shared/utils/parser-v2/types';
 import {
   CONTENT_HEIGHT_SETTINGS,
   pageRender,
   type PageContent,
-} from '../utils/caculatePageRender';
+} from '../../../shared/utils/caculatePageRender';
 
 export function usePageSplit(sections: Section[]) {
   const { setMeasurements } = usePageMeasureStore();

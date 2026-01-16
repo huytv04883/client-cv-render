@@ -1,11 +1,11 @@
 import DEFAULT_CSS from '@/shared/templates/defaultCss.css?raw';
 import { useCallback, useEffect, useRef } from 'react';
-import { parseCssEditor } from '../utils/parser/parseCssEditor';
+import { parseCssEditor } from '../../../shared/utils/parser/parseCssEditor';
 import type { CssSection } from '@/types/css.type';
 import {
   createInstanceStyle,
   replaceCssAttrValue,
-} from '../utils/replaceField';
+} from '../../../shared/utils/replaceField';
 
 export type SectionMap = Map<string, CssSection>;
 

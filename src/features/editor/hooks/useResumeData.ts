@@ -6,7 +6,7 @@ import type {
 } from '@/types/resume.type';
 import { debounce, isEqual } from 'lodash-es';
 import { useCallback, useState } from 'react';
-import { parserResume } from '../utils/parser/parseResume';
+import { parserResume } from '../../../shared/utils/parser/parseResume';
 
 const initialState: ResumeData = {
   header: {
